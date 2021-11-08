@@ -27,19 +27,19 @@ app.get('/:math_operator/:num_1/:num_2', function(req,res){
 	}
 
 	switch(math_operator){
-		case "+":
+		case "a":
 		answer = add(num_1, num_2);
 		break;
 
-		case "-":
+		case "s":
 		answer = subtract(num_1, num_2);
 		break;
 
-		case "x":
+		case "m":
 		answer = multiply(num_1, num_2);
 		break;
 
-		case "/":
+		case "d":
 		answer = divide(num_1, num_2);
 		break;
 
