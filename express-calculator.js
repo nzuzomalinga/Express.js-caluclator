@@ -3,57 +3,73 @@ let express = require("express");
 let app = express();
 let PORT = 8080;
 
-app.get('/:math_operator/:num_1/:num_2', function(req,res){
+app.get('/:num_1/:math_operator/:num_2', function(req,res, next) {
 	
-	let math_operator = req.params.math_operator
-	let num_1 = parseInt(req.params.num_1);
-	let num_2 = parseInt(req.params.num_2);
-	let answer;
+	const math_operator = req.params.math_operator
+	const num_1 = parseInt(req.params.num_1);
+	const num_2 = parseInt(req.params.num_2);
 
-    function add(a, b){
-		return a + b
-	}
-
-	function subtract(a, b){
-		return a - b
-	}
-
-	function multiply(a, b){
-		return a * b
-	}
-
-	function divide(a, b){
-		return a / b
-	}
-
-	switch(math_operator){
-		case "a":
-		answer = add(num_1, num_2);
-		break;
-
-		case "s":
-		answer = subtract(num_1, num_2);
-		break;
-
-		case "m":
-		answer = multiply(num_1, num_2);
-		break;
-
-		case "d":
-		answer = divide(num_1, num_2);
-		break;
-
-		default:
-		answer = "Hey Darren, please enter a valid operator name this time!"
-	}
+	const answer = calculate(num_1, math_operator, num_2);
 	res.json(answer);
 });
 
-app.get("/", function(req, res){
+app.get("/", function(req, res, next){
 	res.send("Do your math in the url address bar please :)")
 });
+
+
+app.use((err, req, res, next) => {
+	res.status(400).send(err);
+})
 
 //Port Listener
 app.listen(PORT, function(){
 	console.log("Listening on PORT:" + PORT);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function calculate(num_1, math_operator, num_2) {
+	switch(math_operator){
+		case "a":
+			return add(num_1, num_2);
+		case "s":
+			return subtract(num_1, num_2);
+		case "m":
+			return multiply(num_1, num_2);
+		case "d":
+			return divide(num_1, num_2);
+
+		default:
+			throw "Hey Darren, please enter a valid operator name this time!"
+	}
+
+	return answer;
+}
+
+function add(a, b){
+	return a + b
+}
+
+function subtract(a, b){
+	return a - b
+}
+
+function multiply(a, b){
+	return a * b
+}
+
+function divide(a, b){
+	return a / b
+}
