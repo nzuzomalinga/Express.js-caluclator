@@ -1,17 +1,17 @@
 # Express.js-caluclator
 
-## Initialise project
+## Install project
 
-> npm i
+`npm ci`
 
 ## Usage Instructions
 
-> npm run calc
+`npm run serve`
 
 Use the express calculator by entering equations into the address bar
 in the following pattern.
 
-> http://localhost:8080/m/10/2 - multiplication
+> http://localhost:8080/m/10/2
 
 > http://localhost:8080/d/10/2 - division
 
