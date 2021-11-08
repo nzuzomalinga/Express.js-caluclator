@@ -11,11 +11,11 @@
 Use the express calculator by entering equations into the address bar
 in the following pattern.
 
-> http://localhost:8080/x/10/1
+> http://localhost:8080/x/10/1 - multiplication
 
-> http://localhost:8080///10/1
+> http://localhost:8080///10/1 - division
 
-> http://localhost:8080/-/10/1
+> http://localhost:8080/-/10/1 - subtraction
 
-> http://localhost:8080/+/10/1
+> http://localhost:8080/+/10/1 - addition
 
